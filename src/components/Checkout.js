@@ -5,7 +5,7 @@ import ThankYouModal from "./ThankYouModal";
 import "../styles/Checkout.css";
 
 function Checkout() {
-    const { cart, clearCart } = useContext(CartContext);
+    const { cart, clearCart, user } = useContext(CartContext);
     const [showThankYouModal, setShowThankYouModal] = useState(false);
     const [selectedPaymentOption, setSelectedPaymentOption] = useState("");
 
@@ -25,8 +25,13 @@ function Checkout() {
     const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
     const handlePayment = (paymentOption) => {
-        setSelectedPaymentOption(paymentOption);
-        setShowThankYouModal(true);
+        if (user) {
+            setSelectedPaymentOption(paymentOption);
+            setShowThankYouModal(true);
+        } else {
+            alert("Please login before proceeding to payment.");
+            // You may want to redirect to the login page here
+        }
     };
 
     return (

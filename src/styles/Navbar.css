@@ -71,6 +71,69 @@
   margin: 5px;
 }
 
+
+/* Dropdown styling */
+.navbar .userSection {
+  position: relative;
+}
+
+.navbar .userSection .avatar {
+  color: white;
+}
+
+.navbar .userSection .dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #2d3338;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  display: none;
+  flex-direction: column;
+  min-width: 120px;
+  z-index: 9999;
+  /* Set a higher z-index to make sure the dropdown is above other components */
+}
+
+.navbar .userSection:hover .dropdown {
+  display: flex;
+  z-index: 9999;
+  /* Maintain the same z-index on hover */
+}
+
+.navbar .userSection .dropdown a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Updated styling for better responsiveness */
+@media only screen and (max-width: 600px) {
+
+  .navbar .rightSide a,
+  .navbar .userSection .dropdown a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar .rightSide,
+  .navbar .userSection .dropdown {
+    position: static;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .navbar .userSection .dropdown {
+    top: auto;
+  }
+
+  .navbar .userSection:hover .dropdown {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .navbar .rightSide a {
     width: 70px;

@@ -9,7 +9,7 @@ function SingleProduct() {
     const { title } = useParams();
     const { addToCart } = useContext(CartContext);
     const [product, setProduct] = useState(null);
-    const { cart } = useContext(CartContext);
+    // const { cart } = useContext(CartContext);
 
     useEffect(() => {
         const fetchProduct = async () => {
