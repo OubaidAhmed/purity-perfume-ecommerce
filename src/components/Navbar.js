@@ -39,7 +39,7 @@ function Navbar() {
           {user ? (
             <>
               <div className="avatar">
-                {user || login ? (
+                {user.avatar ? (
                   <img src={user.avatar} alt="User Avatar" />
                 ) : (
                   <i className="bi bi-person"></i>

@@ -32,12 +32,8 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={user ? <UserProfile /> : <Login/>} />
-        <Route path="/orders" element={user ? <MyOrders /> : <Login/>} />
-        {/* <Route path="/signup" element={user ? <Navigate to="/" /> : <SignUp />} />
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-        <Route path="/profile" element={user ? <UserProfile /> : <Navigate to="/login" />} />
-        <Route path="/orders" element={user ? <MyOrders /> : <Navigate to="/login" />} /> */}
+        <Route path="/profile" element={user ? <UserProfile /> : <Login />} />
+        <Route path="/orders" element={user ? <MyOrders /> : <Login />} />
       </Routes>
       <Footer />
     </div>

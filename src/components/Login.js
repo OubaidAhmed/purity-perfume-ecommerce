@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
     const { login } = useAuth();
@@ -10,7 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = async (event) => {
+    const handleLogin = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
             console.log('Login successful!', response.data.message);
@@ -18,10 +18,20 @@ const Login = () => {
             // Set user as logged in
             login(response.data);
 
+            // After obtaining the token during login
+            const token = response.data.token;
+
+            // Decode the token
+            // const decodedUser = generateToken(token);
+
+            // Set the token in axios headers
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
             // Redirect to the home page
             redirectToHome();
         } catch (error) {
             console.error('Login failed:', error.message);
+            console.log('Detailed error:', error.response?.data); // Log detailed error
         }
     };
 
@@ -29,7 +39,6 @@ const Login = () => {
         // Use this callback for redirection
         navigate('/', { replace: true });
     };
-
 
     return (
         <div>

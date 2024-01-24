@@ -45,8 +45,9 @@ function Home() {
           <div>Loading...</div>
         ) : (
           <div className="menuList">
-            {featuredProductItems.map((menuItem) => (
+            {featuredProductItems.map((menuItem, key) => (
               <ProductCard
+                key={menuItem.id}
                 id={menuItem.id}
                 image={menuItem.thumbnail}
                 name={menuItem.title}
