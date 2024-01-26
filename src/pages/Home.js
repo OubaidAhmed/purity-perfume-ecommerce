@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { CartContext } from "../context/CartContext";
 import { fetchProducts } from "../components/api";
-import Slider from "../components/Slider";
 import "../styles/Home.css";
+import HeroImage from "../components/HeroImage";
 
 
 function Home() {
@@ -38,7 +38,7 @@ function Home() {
 
   return (
     <div className="home">
-      <Slider />
+      <HeroImage />
       <div className="menuSection">
         <h2>Our Collections</h2>
         {loading ? (
@@ -59,7 +59,7 @@ function Home() {
             ))}
           </div>
         )}
-        <Link to="/menu">
+        <Link to="/shop">
           <button className="allItemsButton">View All</button>
         </Link>
       </div>
