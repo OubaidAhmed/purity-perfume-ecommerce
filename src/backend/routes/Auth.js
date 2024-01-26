@@ -12,7 +12,7 @@ dotenv.config();
 
 router.post('/signup', async (req, res) => {
     try {
-        const { email, password, name } = req.body;
+        const { email, password, name, avatar } = req.body;
         const userExist = await User.findOne({ email });
 
         if (userExist) {
@@ -24,7 +24,7 @@ router.post('/signup', async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const user = new User({ email, password: hashedPassword, name });
+        const user = new User({ email, password: hashedPassword, name, avatar });
         const createdUser = await user.save();
 
         res.status(201).json({
@@ -60,10 +60,39 @@ router.post('/login', async (req, res) => {
 });
 
 // Add this route in auth.js
+// router.put('/profile', async (req, res) => {
+//     try {
+//         const { email, password, name, avatar } = req.body;
+//         // Assuming you have a middleware for authentication to get the user ID
+//         const userId = req.user.id;
+
+//         // Find the user by ID and update the details
+//         const updatedUser = await User.findByIdAndUpdate(userId, {
+//             email,
+//             password,
+//             name,
+//             avatar,
+//         }, { new: true });
+
+//         if (!updatedUser) {
+//             // Handle case where user with given ID is not found
+//             return res.status(404).json({ error: 'User not found' });
+//         }
+
+//         res.status(200).json(updatedUser);
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// });
+
 router.put('/profile', async (req, res) => {
     try {
+        // Check if req.user is defined and has the 'id' property
+        if (!req.user || !req.user.id) {
+            return res.status(401).json({ error: 'User not authenticated' });
+        }
+
         const { email, password, name, avatar } = req.body;
-        // Assuming you have a middleware for authentication to get the user ID
         const userId = req.user.id;
 
         // Find the user by ID and update the details
@@ -84,5 +113,6 @@ router.put('/profile', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
 
 module.exports = router;
