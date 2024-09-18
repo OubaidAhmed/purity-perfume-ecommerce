@@ -29,7 +29,7 @@ function Footer() {
         <i className="bi bi-facebook"></i>
         <i className="bi bi-linkedin"></i>
       </div>
-      <p>&copy; Created by <a href="https://www.linkedin.com/in/oubaid-ahmed-siddiqui/" className="fw-bold a-link" target="_blank" rel="noopener noreferrer">Oubaid Ahmed</a></p>
+      <p>&copy; Created this project for <a href="https://www.linkedin.com/in/oubaid-ahmed-siddiqui/" className="fw-bold a-link" target="_blank" rel="noopener noreferrer"> IAD Course</a></p>
     </div>
   );
 }
