@@ -12,7 +12,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+            const response = await axios.post(`${window.location.origin}/api/auth/login`, { email, password });
             console.log('Login successful!', response.data.message);
 
             // Set user as logged in

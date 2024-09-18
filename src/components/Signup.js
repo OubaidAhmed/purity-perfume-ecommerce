@@ -12,7 +12,7 @@ const SignUp = () => {
 
     const handleSignup = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/signup', { name, email, password });
+            const response = await axios.post(`${window.location.origin}/api/auth/signup`, { name, email, password });
             console.log('Signup successful!');
             login(response.data);
         } catch (error) {

@@ -40,7 +40,7 @@ const UserProfile = () => {
                 const avatarData = new FormData();
                 avatarData.append('avatar', formData.avatar);
 
-                const avatarResponse = await fetch('http://localhost:5000/api/auth/upload-avatar', {
+                const avatarResponse = await fetch(`${window.location.origin}/api/auth/upload-avatar`, {
                     method: 'POST',
                     body: avatarData,
                     headers: {
@@ -56,7 +56,7 @@ const UserProfile = () => {
                 }
             }
 
-            const response = await fetch('http://localhost:5000/api/auth/profile', {
+            const response = await fetch(`${window.location.origin}/api/auth/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
